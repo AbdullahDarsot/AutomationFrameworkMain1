@@ -1,23 +1,15 @@
 @Chrome
 Feature: BaseScenarios
 
-  These scenarios can be used in any project
+  Scenario: Login
+    Given the user is logged in
 
-  Scenario: 01. Validate the title of a website
-    Given a DuckDuckGo user is on the base page
-    Then they see the page title contains "DuckDuckGo"
 
-  Scenario: 02. Validate the Url of the website
-    Given a DuckDuckGo user is on the base page
-    Then they see the page Url contains "https://start.duckduckgo.com/"
+  Scenario: Log Out
+    Given the user is logged in
+    Then the user clicks log out
 
-  Scenario: 03. Validate the PageSource string on the website
-    Given a DuckDuckGo user is on the base page
-    Then they see "DuckDuckGo" in the PageSource
-
-  Scenario: 04. Validate existence of multiple texts in PageSource
-    Given a DuckDuckGo user is on the base page
-    Then they see
-      | DuckDuckGo    |
-      | Privacy |
-      | description     |
+  Scenario: Create Board
+    Given the user is logged in
+    When the user clicks create board
+    Then a new board is opened

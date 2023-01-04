@@ -14,9 +14,21 @@ public class BaseSteps extends Page {
         instanceOf(BasePage.class).navigateToBaseUrl();
     }
 
-    @Then("^they see the page title contains \"([^\"]*)\"$")
-    public void they_see_the_page_title_contains(String expectedTitle) {
-        instanceOf(BasePage.class).validatePageTitle(expectedTitle);
+    @Given("the user is logged in")
+    public void userIsLoggedIn() {
+        instanceOf(BasePage.class).navigateToBaseUrl();
+        instanceOf(BasePage.class).enterUsername("abdullah.darsot@roq.co.uk");
+        instanceOf(BasePage.class).clickContinue();
+        instanceOf(BasePage.class).enterPassword("Trello123!");
+        instanceOf(BasePage.class).delay();
+        instanceOf(BasePage.class).clickLogin();
+        instanceOf(BasePage.class).title();
+    }
+
+    @Then("the user clicks log out")
+    public void theUserClicksLogOut() {
+        instanceOf(BasePage.class).clickUserProfile();
+        instanceOf(BasePage.class).clickLogOut();
     }
 
     @Then("^they see the page Url contains \"([^\"]*)\"$")
